@@ -1,4 +1,4 @@
-[
+export const restaurant_data = [
     {
         "business_id": "69618",
         "business_name": "Fancy Wheatfield Bakery",
