@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { restaurant_data } from "./sf-restaurant-data";
+import { Button, Card, Elevation } from "@blueprintjs/core";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
           Search by Restaurant Name:
         </label>
         <input name="search" type="text" />
-        <button type="submit">Search</button>
+        <Button type="submit">Search</Button>
       </form>
     </div>
   );
