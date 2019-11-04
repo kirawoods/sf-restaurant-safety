@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, H1, H2, H4, Classes } from "@blueprintjs/core";
 import "./WelcomePage.css";
-import { MostRecentInspections } from "./MostRecentInspections";
+import MostRecentInspections from "./MostRecentInspections";
 
 class WelcomePage extends Component {
   render() {
