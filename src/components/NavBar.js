@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Navbar, Alignment } from "@blueprintjs/core";
 import { NavLink } from "react-router-dom";
+import "./NavBar.css";
 
 export function NavBar() {
   return (

@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Elevation } from "@blueprintjs/core";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
+import "./MostRecentInspections.css";
 
 export function MostRecentInspections() {
   const sortedRestaurantData = restaurant_data.sort((a, b) =>

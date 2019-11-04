@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, H1, H2, H4, Classes } from "@blueprintjs/core";
-
+import "./WelcomePage.css";
 import { MostRecentInspections } from "./MostRecentInspections";
 
 export function WelcomePage() {
@@ -8,7 +8,7 @@ export function WelcomePage() {
     <div>
       <div className="home-page-container">
         <H1 className="main-header">San Francisco Restaurant Inspections</H1>
-        <div className="bp3-callout .modifier">
+        <div className="bp3-callout .modifier callout-container">
           <H4>About</H4>
           <p>
             The Health Department has developed an inspection report and scoring
@@ -42,8 +42,7 @@ export function WelcomePage() {
 
         <form className="search-form">
           <input
-            className={Classes.INPUT}
-            id="search-input"
+            className={Classes.INPUT + " search-input"}
             name="search"
             type="text"
             placeholder="Search by Restaurant Name..."
