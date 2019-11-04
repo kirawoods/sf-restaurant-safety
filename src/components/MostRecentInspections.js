@@ -8,10 +8,7 @@ const sortedRestaurantData = restaurant_data.sort((a, b) =>
   a.inspection_date < b.inspection_date ? 1 : -1
 );
 
-const mostRecentRestaurants = [];
-for (let i = 0; i < 6; i++) {
-  mostRecentRestaurants.push(sortedRestaurantData[i]);
-}
+const mostRecentRestaurants = sortedRestaurantData.slice(0, 6);
 
 class MostRecentInspections extends Component {
   render() {
