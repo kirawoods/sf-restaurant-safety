@@ -1,4 +1,5 @@
 import React from "react";
+import * as moment from "moment";
 
 export function RestaurantList() {
   const sortedRestaurantData = restaurant_data.sort((a, b) =>
