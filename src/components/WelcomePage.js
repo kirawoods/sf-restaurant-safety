@@ -8,20 +8,14 @@ import {
   H4,
   Classes
 } from "@blueprintjs/core";
-
+import { NavBar } from "./NavBar";
 import { MostRecentInspections } from "./MostRecentInspections";
 
 export function WelcomePage() {
   return (
     <div>
-      <Navbar>
-        <Navbar.Group align={Alignment.LEFT}>
-          <Navbar.Heading>SF Restaurant Inspections</Navbar.Heading>
-          <Navbar.Divider />
-          <Button className="bp3-minimal" icon="home" text="Home" />
-        </Navbar.Group>
-      </Navbar>
-      <div className="header-container">
+      <NavBar />
+      <div className="home-page-container">
         <H1 className="main-header">San Francisco Restaurant Inspections</H1>
         <div className="bp3-callout .modifier">
           <H4>About</H4>
