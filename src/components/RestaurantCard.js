@@ -1,3 +1,6 @@
+import React from "react";
+import { Button, Card, Elevation } from "@blueprintjs/core";
+
 {
   /* <div className="App">
   {restaurant_data.map(restaurant => (
@@ -13,16 +16,16 @@
 </div>; */
 }
 
-export default function CharacterCard(props) {
-  return (
-    <Card className="character-card" key={props.id}>
-      <CardImg src={props.image} alt={props.name}></CardImg>
-      <CardBody>
-        <CardTitle>{props.name}</CardTitle>
-        <CardText>Gender: {props.gender}</CardText>
-        <CardText>Species: {props.species}</CardText>
-        <CardText>Status: {props.status}</CardText>
-      </CardBody>
-    </Card>
-  );
-}
+// export default function CharacterCard(props) {
+//   return (
+//     <Card className="character-card" key={props.id}>
+//       <CardImg src={props.image} alt={props.name}></CardImg>
+//       <CardBody>
+//         <CardTitle>{props.name}</CardTitle>
+//         <CardText>Gender: {props.gender}</CardText>
+//         <CardText>Species: {props.species}</CardText>
+//         <CardText>Status: {props.status}</CardText>
+//       </CardBody>
+//     </Card>
+//   );
+// }
