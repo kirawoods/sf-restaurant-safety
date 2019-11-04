@@ -1,2 +1,51 @@
 @import url("../node_modules/@blueprintjs/core/lib/css/blueprint.css");
 @import url("../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css");
+
+.app-container {
+  display: flex;
+  justify-content: center;
+}
+
+.header-container {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-header {
+  text-align: center;
+  margin: 20px;
+}
+
+.bp3-callout {
+  width: 800px;
+  margin: 20px auto 20px auto;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+
+.search-label {
+  padding-right: 10px;
+}
+
+#search-input {
+  width: 500px;
+}
+
+.recent-inspections-container {
+  padding-top: 20px;
+}
+
+.restaurant-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.restaurant-card {
+  width: 321px;
+  margin: 10px 0px 10px 0px;
+}

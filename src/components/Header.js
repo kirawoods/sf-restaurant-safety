@@ -9,39 +9,49 @@ import {
   H1,
   Label,
   Classes,
-  H2
+  H2,
+  H4
 } from "@blueprintjs/core";
+
+import { RestaurantInfo } from "./RestaurantCard";
 
 export function Header() {
   return (
     <div>
-      <header>
-        <Navbar>
-          <Navbar.Group align={Alignment.LEFT}>
-            <Navbar.Heading>SF Restaurant Inspections</Navbar.Heading>
-            <Navbar.Divider />
-            <Button className="bp3-minimal" icon="home" text="Home" />
-            <Button
-              className="bp3-minimal"
-              icon="document"
-              text="See All Inspections"
-            />
-          </Navbar.Group>
-        </Navbar>
-        <H1>San Francisco Restaurant Inspections</H1>
-        <div class="bp3-callout .modifier">
-          <h4 class="bp3-heading">About</h4>
+      <Navbar>
+        <Navbar.Group align={Alignment.LEFT}>
+          <Navbar.Heading>SF Restaurant Inspections</Navbar.Heading>
+          <Navbar.Divider />
+          <Button className="bp3-minimal" icon="home" text="Home" />
+          <Button
+            className="bp3-minimal"
+            icon="document"
+            text="See All Inspections"
+          />
+        </Navbar.Group>
+      </Navbar>
+      <div className="header-container">
+        <H1 className="main-header">San Francisco Restaurant Inspections</H1>
+        <div className="bp3-callout .modifier">
+          <H4>About</H4>
           It's dangerous to go alone! Take this.
         </div>
-      </header>
-      <form>
-        <Label htmlFor="search" className="search-label">
-          Search by Restaurant Name:
-        </Label>
-        <input className={Classes.INPUT} name="search" type="text" />
-        <Button type="submit">Search</Button>
-      </form>
-      <H2>Recent Inspections:</H2>
+
+        <form className="search-form">
+          <input
+            className={Classes.INPUT}
+            id="search-input"
+            name="search"
+            type="text"
+            placeholder="Search by Restaurant Name..."
+          />
+          <Button type="submit">Search</Button>
+        </form>
+        <div className="recent-inspections-container">
+          <H2>Recent Inspections:</H2>
+          <RestaurantInfo />
+        </div>
+      </div>
     </div>
   );
 }
