@@ -5,7 +5,11 @@ import {
   NavbarGroup,
   NavbarHeading,
   NavbarDivider,
-  Alignment
+  Alignment,
+  H1,
+  Label,
+  Classes,
+  H2
 } from "@blueprintjs/core";
 
 export function Header() {
@@ -24,20 +28,20 @@ export function Header() {
             />
           </Navbar.Group>
         </Navbar>
-        <h1>San Francisco Restaurant Inspections</h1>
-        <p>
-          description... description... description... description...
-          description... description... description... description...
-          description...
-        </p>
+        <H1>San Francisco Restaurant Inspections</H1>
+        <div class="bp3-callout .modifier">
+          <h4 class="bp3-heading">About</h4>
+          It's dangerous to go alone! Take this.
+        </div>
       </header>
       <form>
-        <label htmlFor="search" className="search-label">
+        <Label htmlFor="search" className="search-label">
           Search by Restaurant Name:
-        </label>
-        <input name="search" type="text" />
+        </Label>
+        <input className={Classes.INPUT} name="search" type="text" />
         <Button type="submit">Search</Button>
       </form>
+      <H2>Recent Inspections:</H2>
     </div>
   );
 }
