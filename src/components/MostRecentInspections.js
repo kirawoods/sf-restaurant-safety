@@ -12,7 +12,6 @@ export function MostRecentInspections() {
   for (let i = 0; i < 6; i++) {
     mostRecentRestaurants.push(sortedRestaurantData[i]);
   }
-  console.log(mostRecentRestaurants);
 
   return (
     <div className="restaurant-info">
