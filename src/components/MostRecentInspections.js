@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Card, Elevation } from "@blueprintjs/core";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
@@ -28,10 +28,12 @@ export function MostRecentInspections() {
             {restaurant.business_address}, {restaurant.business_city},
             {restaurant.business_state}, {restaurant.business_postal_code}
           </p>
-          <h4>
+
+          <p>
             Inspection Date:{" "}
             {moment(restaurant.inspection_date).format("MMM Do[,] YYYY")}
-          </h4>
+          </p>
+
           <p>{restaurant.risk_category}</p>
         </Card>
       ))}

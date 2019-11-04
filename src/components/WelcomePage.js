@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import { Button, H1, H2, H4, Classes } from "@blueprintjs/core";
 import "./WelcomePage.css";
 import { MostRecentInspections } from "./MostRecentInspections";
 
-export function WelcomePage() {
-  return (
-    <div>
+class WelcomePage extends Component {
+  render() {
+    return (
       <div className="home-page-container">
         <H1 className="main-header">San Francisco Restaurant Inspections</H1>
         <div className="bp3-callout .modifier callout-container">
@@ -54,6 +54,8 @@ export function WelcomePage() {
           <MostRecentInspections />
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+export default WelcomePage;
