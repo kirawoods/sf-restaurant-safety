@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "@blueprintjs/core";
+import { Card, Elevation } from "@blueprintjs/core";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
 
@@ -17,7 +17,11 @@ export function MostRecentInspections() {
   return (
     <div className="restaurant-info">
       {mostRecentRestaurants.map(restaurant => (
-        <Card className="restaurant-card" key={restaurant.inspection_id}>
+        <Card
+          className="restaurant-card"
+          key={restaurant.inspection_id}
+          elevation={Elevation.THREE}
+        >
           <h1>{restaurant.business_name}</h1>
 
           <p>

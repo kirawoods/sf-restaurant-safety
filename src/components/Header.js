@@ -4,9 +4,10 @@ import {
   Navbar,
   Alignment,
   H1,
-  Classes,
   H2,
-  H4
+  H4,
+  Classes,
+  Elevation
 } from "@blueprintjs/core";
 
 import { MostRecentInspections } from "./MostRecentInspections";
