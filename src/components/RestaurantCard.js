@@ -8,9 +8,15 @@ export function RestaurantInfo() {
     a.inspection_date < b.inspection_date ? 1 : -1
   );
 
+  const mostRecentRestaurants = [];
+  for (let i = 0; i < 6; i++) {
+    mostRecentRestaurants.push(sortedRestaurantData[i]);
+  }
+  console.log(mostRecentRestaurants);
+
   return (
     <div className="restaurant-info">
-      {sortedRestaurantData.map(restaurant => (
+      {mostRecentRestaurants.map(restaurant => (
         <Card className="restaurant-card" key={restaurant.inspection_id}>
           <h1>{restaurant.business_name}</h1>
 
@@ -25,7 +31,6 @@ export function RestaurantInfo() {
           <p>{restaurant.risk_category}</p>
         </Card>
       ))}
-      }
     </div>
   );
 }
