@@ -8,13 +8,12 @@ import {
   H4,
   Classes
 } from "@blueprintjs/core";
-import { NavBar } from "./NavBar";
+
 import { MostRecentInspections } from "./MostRecentInspections";
 
 export function WelcomePage() {
   return (
     <div>
-      <NavBar />
       <div className="home-page-container">
         <H1 className="main-header">San Francisco Restaurant Inspections</H1>
         <div className="bp3-callout .modifier">
