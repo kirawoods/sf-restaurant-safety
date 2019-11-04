@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, Card, Elevation } from "@blueprintjs/core";
+import { Card } from "@blueprintjs/core";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
 
-export function RestaurantInfo() {
+export function MostRecentInspections() {
   const sortedRestaurantData = restaurant_data.sort((a, b) =>
     a.inspection_date < b.inspection_date ? 1 : -1
   );
@@ -34,17 +34,3 @@ export function RestaurantInfo() {
     </div>
   );
 }
-
-// export default function CharacterCard(props) {
-//   return (
-//     <Card className="character-card" key={props.id}>
-//       <CardImg src={props.image} alt={props.name}></CardImg>
-//       <CardBody>
-//         <CardTitle>{props.name}</CardTitle>
-//         <CardText>Gender: {props.gender}</CardText>
-//         <CardText>Species: {props.species}</CardText>
-//         <CardText>Status: {props.status}</CardText>
-//       </CardBody>
-//     </Card>
-//   );
-// }

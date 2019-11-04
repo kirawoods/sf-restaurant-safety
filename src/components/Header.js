@@ -2,9 +2,6 @@ import React from "react";
 import {
   Button,
   Navbar,
-  NavbarGroup,
-  NavbarHeading,
-  NavbarDivider,
   Alignment,
   H1,
   Classes,
@@ -12,7 +9,7 @@ import {
   H4
 } from "@blueprintjs/core";
 
-import { RestaurantInfo } from "./RestaurantCard";
+import { MostRecentInspections } from "./MostRecentInspections";
 
 export function Header() {
   return (
@@ -68,7 +65,7 @@ export function Header() {
         </form>
         <div className="recent-inspections-container">
           <H2>Recent Inspections:</H2>
-          <RestaurantInfo />
+          <MostRecentInspections />
         </div>
       </div>
     </div>
