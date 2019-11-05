@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Button, H1, H2, Classes } from "@blueprintjs/core";
+import { H2 } from "@blueprintjs/core";
 import "./WelcomePage.css";
 import MostRecentInspections from "./MostRecentInspections";
+import Search from "./SearchForm";
 
 class WelcomePage extends Component {
   render() {
@@ -45,19 +46,8 @@ class WelcomePage extends Component {
               inspections since 2016 are not included in the data.
             </p>
           </div>
-
-          <form className="search-form">
-            <input
-              className={Classes.INPUT + " search-input"}
-              name="search"
-              type="text"
-              placeholder="Search by Restaurant Name..."
-            />
-            <Button className="search-button" type="submit">
-              Search
-            </Button>
-          </form>
         </div>
+        <Search />
         <div className="recent-inspections-container">
           <H2 className="recent-inspections-header">Recent Inspections</H2>
           <MostRecentInspections />
