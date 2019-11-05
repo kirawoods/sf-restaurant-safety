@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Elevation } from "@blueprintjs/core";
+import { Card } from "@blueprintjs/core";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
 import "./MostRecentInspections.css";
@@ -8,17 +8,32 @@ const sortedRestaurantData = restaurant_data.sort((a, b) =>
   a.inspection_date < b.inspection_date ? 1 : -1
 );
 
-const mostRecentRestaurants = sortedRestaurantData.slice(0, 6);
+const mostRecentRestaurants = sortedRestaurantData.slice(0, 33);
 
 const lowRiskColor = { backgroundColor: "#90CCF4" };
 const moderateRiskColor = { backgroundColor: "#F3D250" };
 const highRiskColor = { backgroundColor: "#F78888" };
 
+let cardColor = lowRiskColor;
+
+function riskIndicator(restData) {
+  if (restData.risk_category === undefined) {
+    cardColor = lowRiskColor;
+  } else if (restData.risk_category.toLowerCase() === "moderate risk") {
+    cardColor = moderateRiskColor;
+  } else if (restData.risk_category.toLowerCase() === "high risk") {
+    cardColor = highRiskColor;
+  } else {
+    cardColor = lowRiskColor;
+  }
+}
+
 class MostRecentInspections extends Component {
   renderRestaurant(restaurant) {
+    riskIndicator(restaurant);
     return (
       <Card
-        style={lowRiskColor}
+        style={cardColor}
         className="restaurant-card"
         key={restaurant.inspection_id}
       >
