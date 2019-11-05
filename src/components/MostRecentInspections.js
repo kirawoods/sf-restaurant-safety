@@ -10,18 +10,22 @@ const sortedRestaurantData = restaurant_data.sort((a, b) =>
 
 const mostRecentRestaurants = sortedRestaurantData.slice(0, 6);
 
+const lowRiskColor = { backgroundColor: "#90CCF4" };
+const moderateRiskColor = { backgroundColor: "#F3D250" };
+const highRiskColor = { backgroundColor: "#F78888" };
+
 class MostRecentInspections extends Component {
   renderRestaurant(restaurant) {
     return (
       <Card
+        style={lowRiskColor}
         className="restaurant-card"
         key={restaurant.inspection_id}
-        elevation={Elevation.THREE}
       >
         <h1>{restaurant.business_name}</h1>
 
         <p>
-          {restaurant.business_address}, {restaurant.business_city},
+          {restaurant.business_address}, {restaurant.business_city},{" "}
           {restaurant.business_state}, {restaurant.business_postal_code}
         </p>
 

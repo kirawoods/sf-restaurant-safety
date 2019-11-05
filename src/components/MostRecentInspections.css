@@ -1,5 +1,6 @@
 @import url("../../node_modules/@blueprintjs/core/lib/css/blueprint.css");
 @import url("../../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css");
+@import url("https://fonts.googleapis.com/css?family=Comfortaa|Roboto&display=swap");
 
 .restaurant-info {
   display: flex;
@@ -10,4 +11,5 @@
 .restaurant-card {
   width: 321px;
   margin: 10px 0px;
+  font-family: "Roboto", sans-serif;
 }

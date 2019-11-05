@@ -1,22 +1,44 @@
 @import url("../../node_modules/@blueprintjs/core/lib/css/blueprint.css");
 @import url("../../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css");
+@import url("https://fonts.googleapis.com/css?family=Comfortaa|Roboto&display=swap");
 
 .home-page-container {
-  max-width: 1000px;
   display: flex;
   flex-direction: column;
-  margin: 0px auto;
+}
+
+.header-container {
+  position: relative;
+  text-align: center;
+}
+
+.header-image {
+  width: 100%;
+  object-fit: cover;
 }
 
 .main-header {
-  text-align: center;
-  margin: 20px;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Comfortaa";
+  font-weight: 100;
+  font-size: 40px;
+}
+
+.callout-and-search-container {
+  background-color: #5da2d5;
+  padding: 50px;
+  margin-top: -10px;
 }
 
 .callout-container {
-  max-width: 800px;
+  background: none;
+  max-width: 1000px;
   margin: 20px auto;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
 }
 
 .search-form {
@@ -25,15 +47,26 @@
   height: 50px;
 }
 
-.search-label {
-  padding-right: 10px;
+.search-input {
+  width: 600px;
+  height: 50px;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
 }
 
-.search-input {
-  width: 500px;
-  height: 50px;
+.search-button {
+  font-family: "Roboto", sans-serif;
+  width: 100px;
+  font-size: 18px;
 }
 
 .recent-inspections-container {
+  max-width: 1000px;
   padding-top: 20px;
+  margin: 20px auto;
+}
+
+.recent-inspections-header {
+  font-family: "Comfortaa";
+  text-align: center;
 }
