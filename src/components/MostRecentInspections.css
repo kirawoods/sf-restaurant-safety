@@ -1,0 +1,27 @@
+@import url("../../node_modules/@blueprintjs/core/lib/css/blueprint.css");
+@import url("../../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css");
+@import url("https://fonts.googleapis.com/css?family=Comfortaa|Roboto&display=swap");
+
+.restaurant-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.restaurant-card {
+  width: 321px;
+  margin: 10px 0px;
+  font-family: "Roboto", sans-serif;
+}
+
+.low-risk {
+  background-color: #90ccf4;
+}
+
+.moderate-risk {
+  background-color: #f3d250;
+}
+
+.high-risk {
+  background-color: #f78888;
+}

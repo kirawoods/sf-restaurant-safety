@@ -1,0 +1,54 @@
+@import url("../../node_modules/@blueprintjs/core/lib/css/blueprint.css");
+@import url("../../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css");
+@import url("https://fonts.googleapis.com/css?family=Comfortaa|Roboto&display=swap");
+
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-container {
+  position: relative;
+  text-align: center;
+}
+
+.header-image {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.main-header {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Comfortaa";
+  font-weight: 100;
+  font-size: 40px;
+}
+
+.callout-and-search-container {
+  background-color: #5da2d5;
+  padding: 60px;
+  margin: -10px;
+}
+
+.callout-container {
+  background: none;
+  max-width: 1000px;
+  margin: 20px auto;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+}
+
+.recent-inspections-container {
+  max-width: 1000px;
+  padding-top: 20px;
+  margin: 20px auto;
+}
+
+.recent-inspections-header {
+  font-family: "Comfortaa";
+  text-align: center;
+}
