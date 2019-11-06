@@ -12,6 +12,7 @@ class WelcomePage extends Component {
           <img
             className="header-image"
             src="https://cdn.emersonstone.com/images/SF_Skyline_ShipCompliant-no-logo.png"
+            alt="San Francisco Skyline Illustration"
           ></img>
           <h1 className="main-header">San Francisco Restaurant Inspections</h1>
         </div>
