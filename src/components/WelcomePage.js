@@ -3,6 +3,7 @@ import { H2 } from "@blueprintjs/core";
 import "./WelcomePage.css";
 import MostRecentInspections from "./MostRecentInspections";
 import Search from "./SearchForm";
+import Footer from "./Footer";
 
 class WelcomePage extends Component {
   render() {
@@ -53,6 +54,7 @@ class WelcomePage extends Component {
           <H2 className="recent-inspections-header">Recent Inspections</H2>
           <MostRecentInspections />
         </div>
+        <Footer />
       </div>
     );
   }
