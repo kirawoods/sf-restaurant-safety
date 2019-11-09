@@ -8,6 +8,26 @@ import { riskIndicator } from "./MostRecentInspections";
 
 let riskClass = "low-risk";
 
+{
+  /* 
+  <Card className={"restaurant-card" + " " + riskClass}>
+    <h2>{filteredInspections[0].business_name}</h2>
+    <p>
+      {filteredInspections[0].business_address},{" "}
+      {filteredInspections[0].business_city},{" "}
+      {filteredInspections[0].business_state},{" "}
+      {filteredInspections[0].business_postal_code}
+    </p>
+    <p>
+      Inspection Date:{" "}
+      {moment(filteredInspections[0].inspection_date).format("MMM Do[,] YYYY")}
+    </p>
+
+    <p>{filteredInspections[0].risk_category}</p>
+  </Card>
+; */
+}
+
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState(searchTerm);
@@ -22,27 +42,7 @@ export default function Search() {
       setSearchResults("No Restaurants Found with That Name");
     } else {
       riskIndicator(filteredInspections[0]);
-      setSearchResults(
-        <div className="restaurant-info">
-          <Card className={"restaurant-card" + " " + riskClass}>
-            <h2>{filteredInspections[0].business_name}</h2>
-            <p>
-              {filteredInspections[0].business_address},{" "}
-              {filteredInspections[0].business_city},{" "}
-              {filteredInspections[0].business_state},{" "}
-              {filteredInspections[0].business_postal_code}
-            </p>
-            <p>
-              Inspection Date:{" "}
-              {moment(filteredInspections[0].inspection_date).format(
-                "MMM Do[,] YYYY"
-              )}
-            </p>
-
-            <p>{filteredInspections[0].risk_category}</p>
-          </Card>
-        </div>
-      );
+      setSearchResults(filteredInspections);
     }
     console.log(filteredInspections);
   };
@@ -61,7 +61,7 @@ export default function Search() {
           onChange={handleChange}
         />
       </form>
-      {searchResults}
+      <div className="restaurant-info">{JSON.stringify(searchResults)}</div>
     </div>
   );
 }
