@@ -3,6 +3,10 @@ import { Classes, Card } from "@blueprintjs/core";
 import "./SearchForm.css";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
+import "./InspectionCards.css";
+import { riskIndicator } from "./MostRecentInspections";
+
+let riskClass = "low-risk";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -17,24 +21,27 @@ export default function Search() {
     if (filteredInspections.length === 0) {
       setSearchResults("No Restaurants Found with That Name");
     } else {
+      riskIndicator(filteredInspections[0]);
       setSearchResults(
-        <Card>
-          <h2>{filteredInspections[0].business_name}</h2>
-          <p>
-            {filteredInspections[0].business_address},{" "}
-            {filteredInspections[0].business_city},{" "}
-            {filteredInspections[0].business_state},{" "}
-            {filteredInspections[0].business_postal_code}
-          </p>
-          <p>
-            Inspection Date:{" "}
-            {moment(filteredInspections[0].inspection_date).format(
-              "MMM Do[,] YYYY"
-            )}
-          </p>
+        <div className="restaurant-info">
+          <Card className={"restaurant-card" + " " + riskClass}>
+            <h2>{filteredInspections[0].business_name}</h2>
+            <p>
+              {filteredInspections[0].business_address},{" "}
+              {filteredInspections[0].business_city},{" "}
+              {filteredInspections[0].business_state},{" "}
+              {filteredInspections[0].business_postal_code}
+            </p>
+            <p>
+              Inspection Date:{" "}
+              {moment(filteredInspections[0].inspection_date).format(
+                "MMM Do[,] YYYY"
+              )}
+            </p>
 
-          <p>{filteredInspections[0].risk_category}</p>
-        </Card>
+            <p>{filteredInspections[0].risk_category}</p>
+          </Card>
+        </div>
       );
     }
     console.log(filteredInspections);

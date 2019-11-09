@@ -2,21 +2,15 @@ import React, { Component } from "react";
 import { Card } from "@blueprintjs/core";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
-import "./MostRecentInspections.css";
+import "./InspectionCards.css";
 
 const sortedRestaurantData = restaurant_data.sort((a, b) =>
   a.inspection_date < b.inspection_date ? 1 : -1
 );
 
 const mostRecentRestaurants = sortedRestaurantData.slice(0, 33);
-
-const lowRiskColor = { backgroundColor: "#90CCF4" };
-const moderateRiskColor = { backgroundColor: "#F3D250" };
-const highRiskColor = { backgroundColor: "#F78888" };
-
 let riskClass = "low-risk";
-
-function riskIndicator(restData) {
+export function riskIndicator(restData) {
   if (restData.risk_category === undefined) {
     riskClass = "low-risk";
   } else if (restData.risk_category.toLowerCase() === "moderate risk") {
