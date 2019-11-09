@@ -6,9 +6,8 @@ import * as moment from "moment";
 import "./InspectionCards.css";
 import { riskIndicator } from "./MostRecentInspections";
 
-let riskClass = "low-risk";
-
 function renderRestaurantCard(restaurant) {
+  let riskClass = "low-risk";
   riskIndicator(restaurant);
   return (
     <Card
@@ -64,7 +63,7 @@ export default function Search() {
           onChange={handleChange}
         />
       </form>
-      <div className="restaurant-info">{searchResults}</div>
+      <div className="search-results">{searchResults}</div>
     </div>
   );
 }
