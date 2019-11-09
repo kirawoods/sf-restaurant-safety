@@ -16,7 +16,7 @@ export default function Search() {
     if (filteredInspections === undefined) {
       setSearchResults("No Restaurants Found with That Name");
     } else {
-      setSearchResults(filteredInspections[0].business_name);
+      setSearchResults(JSON.stringify(filteredInspections));
     }
     console.log(filteredInspections);
   };
