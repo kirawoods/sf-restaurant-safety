@@ -54,10 +54,13 @@ export default function Search() {
     );
     if (filteredInspections.length === 0) {
       setSearchResults("No Restaurants Found with That Name");
-    } else {
+    } else if (filteredInspections.length <= 20) {
       setSearchResults(filteredInspections.map(renderRestaurantCard));
+    } else {
+      setSearchResults("Please enter a more specific search term...");
     }
     console.log(filteredInspections);
+    console.log(searchResults);
   };
   const handleSubmit = event => {
     event.preventDefault();
