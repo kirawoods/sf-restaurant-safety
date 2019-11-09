@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Classes } from "@blueprintjs/core";
+import { Classes, Card } from "@blueprintjs/core";
 import "./SearchForm.css";
 import { restaurant_data } from "../sf-restaurant-data";
+import * as moment from "moment";
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,7 +17,25 @@ export default function Search() {
     if (filteredInspections.length === 0) {
       setSearchResults("No Restaurants Found with That Name");
     } else {
-      setSearchResults(filteredInspections[0].business_name);
+      setSearchResults(
+        <Card>
+          <h2>{filteredInspections[0].business_name}</h2>
+          <p>
+            {filteredInspections[0].business_address},{" "}
+            {filteredInspections[0].business_city},{" "}
+            {filteredInspections[0].business_state},{" "}
+            {filteredInspections[0].business_postal_code}
+          </p>
+          <p>
+            Inspection Date:{" "}
+            {moment(filteredInspections[0].inspection_date).format(
+              "MMM Do[,] YYYY"
+            )}
+          </p>
+
+          <p>{filteredInspections[0].risk_category}</p>
+        </Card>
+      );
     }
     console.log(filteredInspections);
   };
@@ -35,7 +54,7 @@ export default function Search() {
           onChange={handleChange}
         />
       </form>
-      <div className="search-results">{searchResults}</div>
+      {searchResults}
     </div>
   );
 }
