@@ -4,10 +4,21 @@ import "./SearchForm.css";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
 import "./InspectionCards.css";
-import { riskIndicator } from "./MostRecentInspections";
+
+let riskClass = "low-risk";
+function riskIndicator(restData) {
+  if (restData.risk_category === undefined) {
+    riskClass = "low-risk";
+  } else if (restData.risk_category.toLowerCase() === "moderate risk") {
+    riskClass = "moderate-risk";
+  } else if (restData.risk_category.toLowerCase() === "high risk") {
+    riskClass = "high-risk";
+  } else {
+    riskClass = "low-risk";
+  }
+}
 
 function renderRestaurantCard(restaurant) {
-  let riskClass = "low-risk";
   riskIndicator(restaurant);
   return (
     <Card

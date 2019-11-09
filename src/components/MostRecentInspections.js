@@ -10,7 +10,7 @@ const sortedRestaurantData = restaurant_data.sort((a, b) =>
 
 const mostRecentRestaurants = sortedRestaurantData.slice(0, 33);
 let riskClass = "low-risk";
-export function riskIndicator(restData) {
+function riskIndicator(restData) {
   if (restData.risk_category === undefined) {
     riskClass = "low-risk";
   } else if (restData.risk_category.toLowerCase() === "moderate risk") {
