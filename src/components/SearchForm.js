@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Classes } from "@blueprintjs/core";
+import { Classes } from "@blueprintjs/core";
 import "./SearchForm.css";
 import { restaurant_data } from "../sf-restaurant-data";
 
@@ -10,16 +10,23 @@ export default function Search() {
     event.preventDefault();
     console.log(event.target.value);
     setSearchTerm(event.target.value);
-    const filteredInspections = restaurant_data.filter(x =>
-      x.business_name.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredInspections = restaurant_data.filter(inspection =>
+      inspection.business_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setSearchResults(filteredInspections[0].business_name);
+    if (filteredInspections === undefined) {
+      setSearchResults("No Restaurants Found with That Name");
+    } else {
+      setSearchResults(filteredInspections[0].business_name);
+    }
     console.log(filteredInspections);
+  };
+  const handleSubmit = event => {
+    event.preventDefault();
   };
 
   return (
     <div className="search-container">
-      <form className="search-form">
+      <form className="search-form" onSubmit={handleSubmit}>
         <input
           className={Classes.INPUT + " search-input"}
           name="search"
