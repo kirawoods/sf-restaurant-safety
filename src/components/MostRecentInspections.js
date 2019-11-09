@@ -14,17 +14,17 @@ const lowRiskColor = { backgroundColor: "#90CCF4" };
 const moderateRiskColor = { backgroundColor: "#F3D250" };
 const highRiskColor = { backgroundColor: "#F78888" };
 
-let cardColor = lowRiskColor;
+let riskClass = "low-risk";
 
 function riskIndicator(restData) {
   if (restData.risk_category === undefined) {
-    cardColor = lowRiskColor;
+    riskClass = "low-risk";
   } else if (restData.risk_category.toLowerCase() === "moderate risk") {
-    cardColor = moderateRiskColor;
+    riskClass = "moderate-risk";
   } else if (restData.risk_category.toLowerCase() === "high risk") {
-    cardColor = highRiskColor;
+    riskClass = "high-risk";
   } else {
-    cardColor = lowRiskColor;
+    riskClass = "low-risk";
   }
 }
 
@@ -33,8 +33,7 @@ class MostRecentInspections extends Component {
     riskIndicator(restaurant);
     return (
       <Card
-        style={cardColor}
-        className="restaurant-card"
+        className={"restaurant-card" + " " + riskClass}
         key={restaurant.inspection_id}
       >
         <h1>{restaurant.business_name}</h1>
