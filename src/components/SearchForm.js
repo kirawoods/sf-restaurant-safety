@@ -13,10 +13,10 @@ export default function Search() {
     const filteredInspections = restaurant_data.filter(inspection =>
       inspection.business_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    if (filteredInspections === undefined) {
+    if (filteredInspections.length === 0) {
       setSearchResults("No Restaurants Found with That Name");
     } else {
-      setSearchResults(JSON.stringify(filteredInspections));
+      setSearchResults(filteredInspections[0].business_name);
     }
     console.log(filteredInspections);
   };
