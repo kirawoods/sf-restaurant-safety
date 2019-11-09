@@ -22,21 +22,18 @@ function renderRestaurantCard(restaurant) {
   riskIndicator(restaurant);
   return (
     <Card
-      className={"restaurant-card" + " " + riskClass}
+      className={"search-result-card" + " " + riskClass}
       key={restaurant.inspection_id}
     >
       <h1>{restaurant.business_name}</h1>
-
       <p>
         {restaurant.business_address}, {restaurant.business_city},{" "}
         {restaurant.business_state}, {restaurant.business_postal_code}
       </p>
-
       <p>
         Inspection Date:{" "}
         {moment(restaurant.inspection_date).format("MMM Do[,] YYYY")}
       </p>
-
       <p>{restaurant.risk_category}</p>
     </Card>
   );
@@ -53,14 +50,16 @@ export default function Search() {
       inspection.business_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     if (filteredInspections.length === 0) {
-      setSearchResults("No Restaurants Found with That Name");
+      setSearchResults(
+        <p className="error">No Restaurants Found with That Name</p>
+      );
     } else if (filteredInspections.length <= 20) {
       setSearchResults(filteredInspections.map(renderRestaurantCard));
     } else {
-      setSearchResults("Please enter a more specific search term...");
+      setSearchResults(
+        <p className="error">Please enter a more specific search term...</p>
+      );
     }
-    console.log(filteredInspections);
-    console.log(searchResults);
   };
   const handleSubmit = event => {
     event.preventDefault();
