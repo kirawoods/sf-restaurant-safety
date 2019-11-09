@@ -8,24 +8,28 @@ import { riskIndicator } from "./MostRecentInspections";
 
 let riskClass = "low-risk";
 
-{
-  /* 
-  <Card className={"restaurant-card" + " " + riskClass}>
-    <h2>{filteredInspections[0].business_name}</h2>
-    <p>
-      {filteredInspections[0].business_address},{" "}
-      {filteredInspections[0].business_city},{" "}
-      {filteredInspections[0].business_state},{" "}
-      {filteredInspections[0].business_postal_code}
-    </p>
-    <p>
-      Inspection Date:{" "}
-      {moment(filteredInspections[0].inspection_date).format("MMM Do[,] YYYY")}
-    </p>
+function renderRestaurantCard(restaurant) {
+  riskIndicator(restaurant);
+  return (
+    <Card
+      className={"restaurant-card" + " " + riskClass}
+      key={restaurant.inspection_id}
+    >
+      <h1>{restaurant.business_name}</h1>
 
-    <p>{filteredInspections[0].risk_category}</p>
-  </Card>
-; */
+      <p>
+        {restaurant.business_address}, {restaurant.business_city},{" "}
+        {restaurant.business_state}, {restaurant.business_postal_code}
+      </p>
+
+      <p>
+        Inspection Date:{" "}
+        {moment(restaurant.inspection_date).format("MMM Do[,] YYYY")}
+      </p>
+
+      <p>{restaurant.risk_category}</p>
+    </Card>
+  );
 }
 
 export default function Search() {
@@ -41,8 +45,7 @@ export default function Search() {
     if (filteredInspections.length === 0) {
       setSearchResults("No Restaurants Found with That Name");
     } else {
-      riskIndicator(filteredInspections[0]);
-      setSearchResults(filteredInspections);
+      setSearchResults(filteredInspections.map(renderRestaurantCard));
     }
     console.log(filteredInspections);
   };
@@ -61,7 +64,7 @@ export default function Search() {
           onChange={handleChange}
         />
       </form>
-      <div className="restaurant-info">{JSON.stringify(searchResults)}</div>
+      <div className="restaurant-info">{searchResults}</div>
     </div>
   );
 }
