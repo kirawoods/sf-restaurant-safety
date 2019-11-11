@@ -17,13 +17,22 @@ function riskIndicator(restData) {
     riskClass = "low-risk";
   }
 }
+let inspectionKey = "";
+function keyMaker(restData) {
+  if (restData.violation_id === undefined) {
+    inspectionKey = restData.inspection_id;
+  } else {
+    inspectionKey = restData.violation_id;
+  }
+}
 
 function renderRestaurantCard(restaurant) {
   riskIndicator(restaurant);
+  keyMaker(restaurant);
   return (
     <Card
       className={"search-result-card" + " " + riskClass}
-      key={restaurant.inspection_id}
+      key={inspectionKey}
     >
       <h1>{restaurant.business_name}</h1>
       <p>
@@ -49,7 +58,7 @@ function filterNoResults(results) {
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
-  let searchResults = "";
+  let searchResults = [];
   const handleChange = event => {
     event.preventDefault();
     console.log(event.target.value);
@@ -58,7 +67,9 @@ export default function Search() {
       inspection.business_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     filterNoResults(searchResults);
+    displaySearchResults = searchResults.map(renderRestaurantCard);
     console.log(searchResults);
+    console.log(displaySearchResults);
   };
   const handleSubmit = event => {
     event.preventDefault();
