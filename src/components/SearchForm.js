@@ -17,6 +17,7 @@ function riskIndicator(restData) {
     riskClass = "low-risk";
   }
 }
+
 let inspectionKey = "";
 function keyMaker(restData) {
   if (restData.violation_id === undefined) {
@@ -26,12 +27,41 @@ function keyMaker(restData) {
   }
 }
 
+let displaySearchResults = "";
+let displayQuantityClass = "";
+function filterNoResults(results) {
+  if (results.length === 0) {
+    displaySearchResults = (
+      <p className="error">There were no restaurants with that name</p>
+    );
+  } else if (results.length <= 2) {
+    displayQuantityClass = "two-or-fewer-card";
+    displaySearchResults = (
+      <div className="search-results two-or-fewer">
+        {results.map(renderRestaurantCard)}
+      </div>
+    );
+  } else {
+    displayQuantityClass = "";
+    displaySearchResults = (
+      <div className="search-results">{results.map(renderRestaurantCard)}</div>
+    );
+  }
+}
+function resetSearchResults(term) {
+  if (term.length === 0) {
+    displaySearchResults = "";
+  }
+}
+
 function renderRestaurantCard(restaurant) {
   riskIndicator(restaurant);
   keyMaker(restaurant);
   return (
     <Card
-      className={"search-result-card" + " " + riskClass}
+      className={
+        "search-result-card" + " " + riskClass + " " + displayQuantityClass
+      }
       key={inspectionKey}
     >
       <h1>{restaurant.business_name}</h1>
@@ -46,21 +76,6 @@ function renderRestaurantCard(restaurant) {
       <p>{restaurant.risk_category}</p>
     </Card>
   );
-}
-let displaySearchResults = "";
-function filterNoResults(results) {
-  if (results.length === 0) {
-    displaySearchResults = (
-      <p className="error">There were no restaurants with that name</p>
-    );
-  } else {
-    displaySearchResults = results.map(renderRestaurantCard);
-  }
-}
-function resetSearchResults(term) {
-  if (term.length === 0) {
-    displaySearchResults = "";
-  }
 }
 
 export default function Search() {
@@ -95,7 +110,7 @@ export default function Search() {
           onChange={handleChange}
         />
       </form>
-      <div className="search-results">{displaySearchResults}</div>
+      {displaySearchResults}
     </div>
   );
 }
