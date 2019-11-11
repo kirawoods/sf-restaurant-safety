@@ -26,13 +26,13 @@
   width: 1000px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   margin: 10px auto;
 }
 
 .search-result-card {
   width: 321px;
-  margin: 10px 0px;
+  margin: 6px;
+  text-align: left;
 }
 
 .error {
