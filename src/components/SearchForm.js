@@ -50,7 +50,9 @@ function renderRestaurantCard(restaurant) {
 let displaySearchResults = "";
 function filterNoResults(results) {
   if (results.length === 0) {
-    displaySearchResults = <p>There were no restaurants with that name</p>;
+    displaySearchResults = (
+      <p className="error">There were no restaurants with that name</p>
+    );
   } else {
     displaySearchResults = results.map(renderRestaurantCard);
   }
@@ -67,7 +69,7 @@ export default function Search() {
       inspection.business_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     filterNoResults(searchResults);
-    displaySearchResults = searchResults.map(renderRestaurantCard);
+
     console.log(searchResults);
     console.log(displaySearchResults);
   };
