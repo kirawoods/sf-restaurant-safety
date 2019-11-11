@@ -6,30 +6,26 @@ import * as moment from "moment";
 import "./InspectionCards.css";
 import { riskIndicator, keyMaker } from "./MostRecentInspections";
 
-let displaySearchResults = "";
 let displayQuantityClass = "";
-function filterNoResults(results) {
+function displaySearchResults(results) {
   if (results.length === 0) {
-    displaySearchResults = (
+    return (
       <p className="no-results">There were no restaurants with that name</p>
     );
+  } else if (results.length >= 100) {
+    return "";
   } else if (results.length <= 2) {
     displayQuantityClass = "two-or-fewer-card";
-    displaySearchResults = (
+    return (
       <div className="search-results two-or-fewer">
         {results.map(renderRestaurantCard)}
       </div>
     );
   } else {
     displayQuantityClass = "";
-    displaySearchResults = (
+    return (
       <div className="search-results">{results.map(renderRestaurantCard)}</div>
     );
-  }
-}
-function resetSearchResults(results) {
-  if (results.length >= 100) {
-    displaySearchResults = "";
   }
 }
 
@@ -69,8 +65,6 @@ export default function Search() {
     inspection.business_name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  filterNoResults(searchResults);
-  resetSearchResults(searchResults);
   console.log(searchResults);
   console.log(displaySearchResults);
 
@@ -85,7 +79,7 @@ export default function Search() {
           onChange={handleChange}
         />
       </div>
-      {displaySearchResults}
+      {displaySearchResults(searchResults)}
     </div>
   );
 }
