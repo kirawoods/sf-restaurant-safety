@@ -57,19 +57,26 @@ function filterNoResults(results) {
     displaySearchResults = results.map(renderRestaurantCard);
   }
 }
+function resetSearchResults(term) {
+  if (term.length === 0) {
+    displaySearchResults = "";
+  }
+}
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
   let searchResults = [];
   const handleChange = event => {
     event.preventDefault();
-    console.log(event.target.value);
-    setSearchTerm(event.target.value);
+    console.log(event.currentTarget.value);
+    setSearchTerm(event.currentTarget.value);
     searchResults = restaurant_data.filter(inspection =>
       inspection.business_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    filterNoResults(searchResults);
 
+    filterNoResults(searchResults);
+    resetSearchResults(event.currentTarget.value);
+    console.log(event.currentTarget.value);
     console.log(searchResults);
     console.log(displaySearchResults);
   };
