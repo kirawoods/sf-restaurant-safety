@@ -4,7 +4,7 @@ import "./SearchForm.css";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
 import "./InspectionCards.css";
-import { riskIndicator, riskClass, keyMaker } from "./MostRecentInspections";
+import { riskIndicator, keyMaker } from "./MostRecentInspections";
 
 let displaySearchResults = "";
 let displayQuantityClass = "";
@@ -34,11 +34,14 @@ function resetSearchResults(results) {
 }
 
 function renderRestaurantCard(restaurant) {
-  riskIndicator(restaurant);
-
   return (
     <Card
-      className={"search-result-card " + riskClass + " " + displayQuantityClass}
+      className={
+        "search-result-card " +
+        riskIndicator(restaurant) +
+        " " +
+        displayQuantityClass
+      }
       key={keyMaker(restaurant)}
     >
       <h1>{restaurant.business_name}</h1>

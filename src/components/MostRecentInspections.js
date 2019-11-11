@@ -9,16 +9,16 @@ const sortedRestaurantData = restaurant_data.sort((a, b) =>
 );
 
 const mostRecentRestaurants = sortedRestaurantData.slice(0, 33);
-export let riskClass = "low-risk";
+
 export function riskIndicator(restData) {
   if (restData.risk_category === undefined) {
-    riskClass = "low-risk";
+    return "low-risk";
   } else if (restData.risk_category.toLowerCase() === "moderate risk") {
-    riskClass = "moderate-risk";
+    return "moderate-risk";
   } else if (restData.risk_category.toLowerCase() === "high risk") {
-    riskClass = "high-risk";
+    return "high-risk";
   } else {
-    riskClass = "low-risk";
+    return "low-risk";
   }
 }
 
@@ -32,11 +32,9 @@ export function keyMaker(restData) {
 
 class MostRecentInspections extends Component {
   renderRestaurant(restaurant) {
-    riskIndicator(restaurant);
-
     return (
       <Card
-        className={"restaurant-card " + riskClass}
+        className={"restaurant-card " + riskIndicator(restaurant)}
         key={keyMaker(restaurant)}
       >
         <h1>{restaurant.business_name}</h1>
