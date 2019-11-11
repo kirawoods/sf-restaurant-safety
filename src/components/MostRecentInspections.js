@@ -21,21 +21,24 @@ export function riskIndicator(restData) {
     riskClass = "low-risk";
   }
 }
-export let inspectionKey = "";
+
 export function keyMaker(restData) {
   if (restData.violation_id === undefined) {
-    inspectionKey = restData.inspection_id;
+    return restData.inspection_id;
   } else {
-    inspectionKey = restData.violation_id;
+    return restData.violation_id;
   }
 }
 
 class MostRecentInspections extends Component {
   renderRestaurant(restaurant) {
     riskIndicator(restaurant);
-    keyMaker(restaurant);
+
     return (
-      <Card className={"restaurant-card " + riskClass} key={inspectionKey}>
+      <Card
+        className={"restaurant-card " + riskClass}
+        key={keyMaker(restaurant)}
+      >
         <h1>{restaurant.business_name}</h1>
 
         <p>
