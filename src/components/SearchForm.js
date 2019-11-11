@@ -38,28 +38,27 @@ function renderRestaurantCard(restaurant) {
     </Card>
   );
 }
+let displaySearchResults = "";
+function filterNoResults(results) {
+  if (results.length === 0) {
+    displaySearchResults = <p>There were no restaurants with that name</p>;
+  } else {
+    displaySearchResults = results.map(renderRestaurantCard);
+  }
+}
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState(searchTerm);
+  let searchResults = "";
   const handleChange = event => {
     event.preventDefault();
     console.log(event.target.value);
     setSearchTerm(event.target.value);
-    const filteredInspections = restaurant_data.filter(inspection =>
+    searchResults = restaurant_data.filter(inspection =>
       inspection.business_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    if (filteredInspections.length === 0) {
-      setSearchResults(
-        <p className="error">No Restaurants Found with That Name</p>
-      );
-    } else if (filteredInspections.length <= 20) {
-      setSearchResults(filteredInspections.map(renderRestaurantCard));
-    } else {
-      setSearchResults(
-        <p className="error">Please enter a more specific search term...</p>
-      );
-    }
+    filterNoResults(searchResults);
+    console.log(searchResults);
   };
   const handleSubmit = event => {
     event.preventDefault();
@@ -76,7 +75,7 @@ export default function Search() {
           onChange={handleChange}
         />
       </form>
-      <div className="search-results">{searchResults}</div>
+      <div className="search-results">{displaySearchResults}</div>
     </div>
   );
 }
