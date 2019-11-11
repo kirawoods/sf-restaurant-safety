@@ -32,8 +32,8 @@ function filterNoResults(results) {
     );
   }
 }
-function resetSearchResults(term) {
-  if (term.length === 0) {
+function resetSearchResults(results) {
+  if (results.length >= 100) {
     displaySearchResults = "";
   }
 }
@@ -62,33 +62,31 @@ function renderRestaurantCard(restaurant) {
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState("");
-  let searchResults = [];
+
   const handleChange = event => {
     event.preventDefault();
-
     setSearchTerm(event.currentTarget.value);
-    searchResults = restaurant_data.filter(inspection =>
-      inspection.business_name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  };
+  const searchResults = restaurant_data.filter(inspection =>
+    inspection.business_name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-    filterNoResults(searchResults);
-    resetSearchResults(event.currentTarget.value);
-  };
-  const handleSubmit = event => {
-    event.preventDefault();
-  };
+  filterNoResults(searchResults);
+  resetSearchResults(searchResults);
+  console.log(searchResults);
+  console.log(displaySearchResults);
 
   return (
     <div className="search-container">
-      <form className="search-form" onSubmit={handleSubmit}>
+      <div className="search-form">
         <input
           className={Classes.INPUT + " search-input"}
           name="search"
           type="text"
-          placeholder="Search by Restaurant Name..."
+          placeholder="Search by Restaurant Name…"
           onChange={handleChange}
         />
-      </form>
+      </div>
       {displaySearchResults}
     </div>
   );

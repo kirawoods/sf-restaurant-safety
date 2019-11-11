@@ -43,6 +43,7 @@
 }
 
 .no-results {
-  margin: auto;
+  margin: 20px auto;
   font-family: "Roboto", sans-serif;
+  text-align: center;
 }
