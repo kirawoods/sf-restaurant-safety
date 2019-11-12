@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Card } from "@blueprintjs/core";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
-import "./MostRecentInspections.css";
+import "./InspectionCards.css";
 
 const sortedRestaurantData = restaurant_data.sort((a, b) =>
   a.inspection_date < b.inspection_date ? 1 : -1
@@ -10,27 +10,32 @@ const sortedRestaurantData = restaurant_data.sort((a, b) =>
 
 const mostRecentRestaurants = sortedRestaurantData.slice(0, 33);
 
-let riskClass = "low-risk";
-
-function riskIndicator(restData) {
+export function riskIndicator(restData) {
   if (restData.risk_category === undefined) {
-    riskClass = "low-risk";
+    return "low-risk";
   } else if (restData.risk_category.toLowerCase() === "moderate risk") {
-    riskClass = "moderate-risk";
+    return "moderate-risk";
   } else if (restData.risk_category.toLowerCase() === "high risk") {
-    riskClass = "high-risk";
+    return "high-risk";
   } else {
-    riskClass = "low-risk";
+    return "low-risk";
+  }
+}
+
+export function keyMaker(restData) {
+  if (restData.violation_id === undefined) {
+    return restData.inspection_id;
+  } else {
+    return restData.violation_id;
   }
 }
 
 class MostRecentInspections extends Component {
   renderRestaurant(restaurant) {
-    riskIndicator(restaurant);
     return (
       <Card
-        className={"restaurant-card" + " " + riskClass}
-        key={restaurant.inspection_id}
+        className={"restaurant-card " + riskIndicator(restaurant)}
+        key={keyMaker(restaurant)}
       >
         <h1>{restaurant.business_name}</h1>
 

@@ -3,6 +3,7 @@ import { H2 } from "@blueprintjs/core";
 import "./WelcomePage.css";
 import MostRecentInspections from "./MostRecentInspections";
 import Search from "./SearchForm";
+import Footer from "./Footer";
 
 class WelcomePage extends Component {
   render() {
@@ -12,6 +13,7 @@ class WelcomePage extends Component {
           <img
             className="header-image"
             src="https://cdn.emersonstone.com/images/SF_Skyline_ShipCompliant-no-logo.png"
+            alt="San Francisco Skyline Illustration"
           ></img>
           <h1 className="main-header">San Francisco Restaurant Inspections</h1>
         </div>
@@ -52,6 +54,7 @@ class WelcomePage extends Component {
           <H2 className="recent-inspections-header">Recent Inspections</H2>
           <MostRecentInspections />
         </div>
+        <Footer />
       </div>
     );
   }

@@ -21,3 +21,29 @@
   width: 100px;
   font-size: 18px;
 }
+
+.search-results {
+  width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px auto;
+  justify-content: space-between;
+}
+.two-or-fewer {
+  justify-content: flex-start;
+}
+
+.search-result-card {
+  width: 321px;
+  text-align: left;
+  margin: 10px 0px;
+}
+.two-or-fewer-card {
+  margin: 20px 20px 0px 0px;
+}
+
+.no-results {
+  margin: 20px auto;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
