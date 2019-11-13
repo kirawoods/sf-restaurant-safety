@@ -24,7 +24,7 @@ export function riskIndicator(restaurantInspection) {
   }
 }
 
-export function keyMaker(restaurantInspection) {
+export function uniqueKeyForInspection(restaurantInspection) {
   if (restaurantInspection.violation_id === undefined) {
     return restaurantInspection.inspection_id;
   } else {
@@ -37,7 +37,7 @@ class MostRecentInspections extends Component {
     return (
       <Card
         className={"restaurant-card " + riskIndicator(restaurant)}
-        key={keyMaker(restaurant)}
+        key={uniqueKeyForInspection(restaurant)}
       >
         <h1>{restaurant.business_name}</h1>
 

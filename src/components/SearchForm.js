@@ -4,7 +4,7 @@ import "./SearchForm.css";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
 import "./InspectionCards.css";
-import { riskIndicator, keyMaker } from "./MostRecentInspections";
+import { riskIndicator, uniqueKeyForInspection } from "./MostRecentInspections";
 
 let displaySearchResults = "";
 let displayQuantityClass = "";
@@ -17,13 +17,15 @@ function filterNoResults(results) {
     displayQuantityClass = "two-or-fewer-card";
     displaySearchResults = (
       <div className="search-results two-or-fewer">
-        {results.map(renderRestaurantCard)}
+        {results.map(renderRestaurantInspeciton)}
       </div>
     );
   } else {
     displayQuantityClass = "";
     displaySearchResults = (
-      <div className="search-results">{results.map(renderRestaurantCard)}</div>
+      <div className="search-results">
+        {results.map(renderRestaurantInspeciton)}
+      </div>
     );
   }
 }
@@ -33,27 +35,27 @@ function resetSearchResults(results) {
   }
 }
 
-function renderRestaurantCard(restaurant) {
+function renderRestaurantInspeciton(inspection) {
   return (
     <Card
       className={
         "search-result-card " +
-        riskIndicator(restaurant) +
+        riskIndicator(inspection) +
         " " +
         displayQuantityClass
       }
-      key={keyMaker(restaurant)}
+      key={uniqueKeyForInspection(inspection)}
     >
-      <h1>{restaurant.business_name}</h1>
+      <h1>{inspection.business_name}</h1>
       <p>
-        {restaurant.business_address}, {restaurant.business_city},{" "}
-        {restaurant.business_state}, {restaurant.business_postal_code}
+        {inspection.business_address}, {inspection.business_city},{" "}
+        {inspection.business_state}, {inspection.business_postal_code}
       </p>
       <p>
         Inspection Date:{" "}
-        {moment(restaurant.inspection_date).format("MMM Do[,] YYYY")}
+        {moment(inspection.inspection_date).format("MMM Do[,] YYYY")}
       </p>
-      <p>{restaurant.risk_category}</p>
+      <p>{inspection.risk_category}</p>
     </Card>
   );
 }
