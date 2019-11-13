@@ -71,8 +71,6 @@ export function Search() {
 
   filterNoResults(searchResults);
   resetSearchResults(searchResults);
-  console.log(searchResults);
-  console.log(displaySearchResults);
 
   return (
     <div className="search-container">

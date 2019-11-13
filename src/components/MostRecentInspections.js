@@ -10,23 +10,25 @@ const sortedRestaurantData = restaurant_data.sort((a, b) =>
 
 const mostRecentRestaurants = sortedRestaurantData.slice(0, 33);
 
-export function riskIndicator(restData) {
-  if (restData.risk_category === undefined) {
+export function riskIndicator(restaurantInspection) {
+  if (restaurantInspection.risk_category === undefined) {
     return "low-risk";
-  } else if (restData.risk_category.toLowerCase() === "moderate risk") {
+  } else if (
+    restaurantInspection.risk_category.toLowerCase() === "moderate risk"
+  ) {
     return "moderate-risk";
-  } else if (restData.risk_category.toLowerCase() === "high risk") {
+  } else if (restaurantInspection.risk_category.toLowerCase() === "high risk") {
     return "high-risk";
   } else {
     return "low-risk";
   }
 }
 
-export function keyMaker(restData) {
-  if (restData.violation_id === undefined) {
-    return restData.inspection_id;
+export function keyMaker(restaurantInspection) {
+  if (restaurantInspection.violation_id === undefined) {
+    return restaurantInspection.inspection_id;
   } else {
-    return restData.violation_id;
+    return restaurantInspection.violation_id;
   }
 }
 
