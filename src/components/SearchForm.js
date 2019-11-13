@@ -58,7 +58,7 @@ function renderRestaurantCard(restaurant) {
   );
 }
 
-export default function Search() {
+export function Search() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = event => {
