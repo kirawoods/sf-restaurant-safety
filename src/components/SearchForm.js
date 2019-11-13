@@ -19,6 +19,8 @@ function displaySearchResults(results) {
         {results.map(renderRestaurantInspeciton)}
       </div>
     );
+  } else if (results.length > 100) {
+    return "";
   } else {
     displayQuantityClass = "";
     return (
@@ -71,7 +73,7 @@ export function Search() {
   );
 
   resetSearchResults(searchResults);
-
+  console.log(searchResults);
   return (
     <div className="search-container">
       <div className="search-form">
