@@ -6,13 +6,6 @@ import * as moment from "moment";
 import "./InspectionCards.css";
 import { riskIndicator, uniqueKeyForInspection } from "./MostRecentInspections";
 
-function displayQuantityClass(results) {
-  if (results.length <= 2) {
-    return "two-or-fewer-card";
-  } else {
-    return "";
-  }
-}
 function displaySearchResults(results) {
   if (results.length === 0) {
     return (
@@ -21,7 +14,9 @@ function displaySearchResults(results) {
   } else if (results.length <= 2) {
     return (
       <div className="search-results two-or-fewer">
-        {results.map(renderRestaurantInspeciton(displayQuantityClass(results)))}
+        {results.map(inspection =>
+          renderRestaurantInspeciton(inspection, "two-or-fewer-card")
+        )}
       </div>
     );
   } else if (results.length > 100) {
@@ -29,7 +24,7 @@ function displaySearchResults(results) {
   } else {
     return (
       <div className="search-results">
-        {results.map(renderRestaurantInspeciton(displayQuantityClass(results)))}
+        {results.map(inspection => renderRestaurantInspeciton(inspection, ""))}
       </div>
     );
   }
