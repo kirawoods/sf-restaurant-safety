@@ -6,26 +6,30 @@ import * as moment from "moment";
 import "./InspectionCards.css";
 import { riskIndicator, uniqueKeyForInspection } from "./MostRecentInspections";
 
-let displayQuantityClass = "";
+function displayQuantityClass(results) {
+  if (results.length <= 2) {
+    return "two-or-fewer-card";
+  } else {
+    return "";
+  }
+}
 function displaySearchResults(results) {
   if (results.length === 0) {
     return (
       <p className="no-results">There were no restaurants with that name</p>
     );
   } else if (results.length <= 2) {
-    displayQuantityClass = "two-or-fewer-card";
     return (
       <div className="search-results two-or-fewer">
-        {results.map(renderRestaurantInspeciton)}
+        {results.map(renderRestaurantInspeciton(displayQuantityClass(results)))}
       </div>
     );
   } else if (results.length > 100) {
     return "";
   } else {
-    displayQuantityClass = "";
     return (
       <div className="search-results">
-        {results.map(renderRestaurantInspeciton)}
+        {results.map(renderRestaurantInspeciton(displayQuantityClass(results)))}
       </div>
     );
   }
@@ -36,14 +40,11 @@ function resetSearchResults(results) {
   }
 }
 
-function renderRestaurantInspeciton(inspection) {
+function renderRestaurantInspeciton(inspection, quantity) {
   return (
     <Card
       className={
-        "search-result-card " +
-        riskIndicator(inspection) +
-        " " +
-        displayQuantityClass
+        "search-result-card " + riskIndicator(inspection) + " " + quantity
       }
       key={uniqueKeyForInspection(inspection)}
     >
