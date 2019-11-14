@@ -64,7 +64,7 @@ export function Search() {
   );
 
   resetSearchResults(searchResults);
-  console.log(searchResults);
+
   return (
     <div className="search-container">
       <div className="search-form">
