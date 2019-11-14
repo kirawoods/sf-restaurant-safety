@@ -3,6 +3,7 @@ import { Card } from "@blueprintjs/core";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
 import "./InspectionCards.css";
+var classNames = require("classnames");
 
 const sortedRestaurantData = restaurant_data.sort((a, b) =>
   a.inspection_date < b.inspection_date ? 1 : -1
@@ -34,11 +35,9 @@ export function uniqueKeyForInspection(restaurantInspection) {
 
 class MostRecentInspections extends Component {
   renderRestaurantInspection(inspection) {
+    var cardClass = classNames("restaurant-card", riskIndicator(inspection));
     return (
-      <Card
-        className={"restaurant-card " + riskIndicator(inspection)}
-        key={uniqueKeyForInspection(inspection)}
-      >
+      <Card className={cardClass} key={uniqueKeyForInspection(inspection)}>
         <h1>{inspection.business_name}</h1>
 
         <p>

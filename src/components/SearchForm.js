@@ -5,6 +5,7 @@ import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
 import "./InspectionCards.css";
 import { riskIndicator, uniqueKeyForInspection } from "./MostRecentInspections";
+var classNames = require("classnames");
 
 function displaySearchResults(results) {
   if (results.length === 0) {
@@ -34,11 +35,9 @@ function resetSearchResults(results) {
 }
 
 function renderRestaurantInspeciton(inspection) {
+  var cardClass = classNames("search-result-card ", riskIndicator(inspection));
   return (
-    <Card
-      className={"search-result-card " + riskIndicator(inspection)}
-      key={uniqueKeyForInspection(inspection)}
-    >
+    <Card className={cardClass} key={uniqueKeyForInspection(inspection)}>
       <h1>{inspection.business_name}</h1>
       <p>
         {inspection.business_address}, {inspection.business_city},{" "}
