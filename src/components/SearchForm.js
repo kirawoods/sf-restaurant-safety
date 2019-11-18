@@ -28,11 +28,6 @@ function displaySearchResults(results) {
     );
   }
 }
-function resetSearchResults(results) {
-  if (results.length >= 100) {
-    return "";
-  }
-}
 
 function renderRestaurantInspeciton(inspection) {
   var cardClass = classNames("search-result-card ", riskIndicator(inspection));
@@ -62,8 +57,6 @@ export function Search() {
   const searchResults = restaurant_data.filter(inspection =>
     inspection.business_name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-  resetSearchResults(searchResults);
 
   return (
     <div className="search-container">
