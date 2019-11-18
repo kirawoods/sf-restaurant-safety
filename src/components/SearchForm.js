@@ -5,7 +5,7 @@ import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
 import "./InspectionCards.css";
 import { riskIndicator, uniqueKeyForInspection } from "./MostRecentInspections";
-var classNames = require("classnames");
+import * as classNames from "classnames";
 
 function displaySearchResults(results) {
   if (results.length === 0) {
