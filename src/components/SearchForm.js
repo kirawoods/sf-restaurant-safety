@@ -4,57 +4,50 @@ import "./SearchForm.css";
 import { restaurant_data } from "../sf-restaurant-data";
 import * as moment from "moment";
 import "./InspectionCards.css";
-import { riskIndicator, keyMaker } from "./MostRecentInspections";
+import { riskIndicator, uniqueKeyForInspection } from "./MostRecentInspections";
+import * as classNames from "classnames";
 
-let displayQuantityClass = "";
 function displaySearchResults(results) {
   if (results.length === 0) {
     return (
       <p className="no-results">There were no restaurants with that name</p>
     );
-  } else if (results.length >= 100) {
-    return "";
   } else if (results.length <= 2) {
-    displayQuantityClass = "two-or-fewer-card";
     return (
-      <div className="search-results two-or-fewer">
-        {results.map(renderRestaurantCard)}
+      <div className="search-results">
+        {results.map(renderRestaurantInspeciton)}
       </div>
     );
+  } else if (results.length > 100) {
+    return "";
   } else {
-    displayQuantityClass = "";
     return (
-      <div className="search-results">{results.map(renderRestaurantCard)}</div>
+      <div className="search-results">
+        {results.map(renderRestaurantInspeciton)}
+      </div>
     );
   }
 }
 
-function renderRestaurantCard(restaurant) {
+function renderRestaurantInspeciton(inspection) {
+  var cardClass = classNames("search-result-card ", riskIndicator(inspection));
   return (
-    <Card
-      className={
-        "search-result-card " +
-        riskIndicator(restaurant) +
-        " " +
-        displayQuantityClass
-      }
-      key={keyMaker(restaurant)}
-    >
-      <h1>{restaurant.business_name}</h1>
+    <Card className={cardClass} key={uniqueKeyForInspection(inspection)}>
+      <h1>{inspection.business_name}</h1>
       <p>
-        {restaurant.business_address}, {restaurant.business_city},{" "}
-        {restaurant.business_state}, {restaurant.business_postal_code}
+        {inspection.business_address}, {inspection.business_city},{" "}
+        {inspection.business_state}, {inspection.business_postal_code}
       </p>
       <p>
         Inspection Date:{" "}
-        {moment(restaurant.inspection_date).format("MMM Do[,] YYYY")}
+        {moment(inspection.inspection_date).format("MMM Do[,] YYYY")}
       </p>
-      <p>{restaurant.risk_category}</p>
+      <p>{inspection.risk_category}</p>
     </Card>
   );
 }
 
-export default function Search() {
+export function Search() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleChange = event => {
@@ -64,9 +57,6 @@ export default function Search() {
   const searchResults = restaurant_data.filter(inspection =>
     inspection.business_name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-  console.log(searchResults);
-  console.log(displaySearchResults);
 
   return (
     <div className="search-container">

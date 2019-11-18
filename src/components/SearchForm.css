@@ -23,23 +23,16 @@
 }
 
 .search-results {
-  width: 1000px;
+  width: 1020px;
   display: flex;
   flex-wrap: wrap;
   margin: 20px auto;
-  justify-content: space-between;
-}
-.two-or-fewer {
-  justify-content: flex-start;
 }
 
 .search-result-card {
-  width: 321px;
+  width: 320px;
   text-align: left;
-  margin: 10px 0px;
-}
-.two-or-fewer-card {
-  margin: 20px 20px 0px 0px;
+  margin: 10px;
 }
 
 .no-results {
