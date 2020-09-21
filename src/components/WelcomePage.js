@@ -4,6 +4,7 @@ import "./WelcomePage.css";
 import MostRecentInspections from "./MostRecentInspections";
 import { Search } from "./SearchForm";
 import Footer from "./Footer";
+import sfskyline from "../../src/sf-skyline-illustration.png";
 
 class WelcomePage extends Component {
   render() {
@@ -12,7 +13,7 @@ class WelcomePage extends Component {
         <div className="header-container">
           <img
             className="header-image"
-            src="https://cdn.emersonstone.com/images/SF_Skyline_ShipCompliant-no-logo.png"
+            src={sfskyline}
             alt="San Francisco Skyline Illustration"
           ></img>
           <h1 className="main-header">San Francisco Restaurant Inspections</h1>
